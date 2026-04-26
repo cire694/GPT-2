@@ -9,7 +9,11 @@ class ModelConfig():
     embd_dim: representation size
     num_blocks: number of transformer blocks
     """
-    n_heads: int
     embd_dim: int
+    
+    #attention
+    n_heads: int
+    
+    #transformer
     num_blocks: int
     activation: function
