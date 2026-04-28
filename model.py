@@ -2,7 +2,6 @@ import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import tiktoken
 from modules import Block
 from config import ModelConfig
 
@@ -13,7 +12,6 @@ class GPT(nn.Module):
     def __init__(self, config:ModelConfig): 
         super().__init__()
         self.config = config
-
         self.loss_fn = LOSS_FN[config.loss_fn]()
 
         # GPT: wte(x) + wpe(x) -> hidden(x) -> layerNorm(x) -> fc_out(x) 
@@ -54,7 +52,7 @@ class GPT(nn.Module):
         if labels is not None:
             observed = logits.reshape(-1, self.config.vocab_size) #(B * T, vocab_size)
             expected = labels.reshape(-1) #(B * T, )
-            loss = F.cross_entropy(observed, expected)
+            loss = self.loss_fn(observed, expected)
         return logits, loss
     
     def generate(self, x, max_length, num_samples = 1, top_k = None, seed=42):
