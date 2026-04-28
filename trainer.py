@@ -4,7 +4,6 @@ import os
 import torch.nn as nn
 from collections.abc import Callable
 from torch.utils.data import  DataLoader
-from model import GPT
 from config import TrainConfig
 
 
