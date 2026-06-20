@@ -30,6 +30,7 @@ def main():
     )
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    print(f"Using device: {device}")
 
     model = GPT(model_config).to(device)
 

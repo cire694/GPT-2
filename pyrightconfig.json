@@ -2,5 +2,7 @@
   "reportCallIssue": "none",
   "reportAttributeAccessIssue": "none",
   "reportArgumentType": "none", 
-  "reportGeneralTypeIssues": "none"
+  "reportGeneralTypeIssues": "none",
+  "reportOptionalMemberAccess": "none",
+  "reportOptionalOperand": "none",
 }
