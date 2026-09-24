@@ -25,10 +25,10 @@ def main():
         activation='gelu'
     )
     train_config = TrainConfig(
-        batch_size=64, microbatch_size=8, 
-        save_freq=500, max_steps = 2000, max_val_batches=20, 
-        max_lr=6e-4, min_lr = 6e-5, warmup_steps=100
-    )
+            batch_size=64, microbatch_size=8, 
+            save_freq=500, max_steps = 600_000, max_val_batches=20, 
+            max_lr=6e-4, min_lr = 6e-5, warmup_steps=5000
+        )
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f"Using device: {device}")
@@ -50,7 +50,7 @@ def main():
         lr_scheduler=lr_scheduler, config=train_config
     )
 
-    trainer.train(out_folder='shakespeare/checkpoints')
+    trainer.train(out_folder='checkpoints/fineweb')
 
 if __name__ == '__main__':
     main()
